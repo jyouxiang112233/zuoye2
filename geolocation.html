@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+#map_box{width:800px; height:600px; border:1px solid #000; margin:0 auto;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script>
+window.onload=function(){
+	// 百度地图API功能
+	var map = new BMap.Map('map_box');
+	map.centerAndZoom(new BMap.Point(116.46636,39.912009), 19);
+	map.enableScrollWheelZoom(true);
+	// 覆盖区域图层测试
+	map.addTileLayer(new BMap.PanoramaCoverageLayer());
+
+	var stCtrl = new BMap.PanoramaControl(); //构造全景控件
+	stCtrl.setOffset(new BMap.Size(20, 20));
+	map.addControl(stCtrl);//添加全景控件            
+};
+</script>
+</head>
+
+<body>
+<div id="map_box"></div>
+</body>

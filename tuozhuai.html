@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+#t1{width:300px; height:400px;}
+.box{width:400px; height:300px; border:1px solid #000;  position:absolute; top:50%; left:50%; margin-left:-200px; margin-top:-150px; text-align:center; line-height:300px; font-size:30px; display:none;}
+</style>
+<script>
+window.onload=function(){
+	var oBox = document.querySelector('.box');
+	var oT = document.getElementById('t1');
+	oBox.ondragenter = function(){
+		oBox.innerHTML = '释放鼠标';
+	};
+	oBox.ondragleave = function(){
+		oBox.innerHTML = '请将文件拖放到此处';
+	};
+	oBox.ondragover = function(){
+		return false;
+	};
+	oBox.ondrop = function(ev){
+		var oFile = ev.dataTransfer.files[0];
+		var reader = new FileReader();
+		reader.onload=function(){
+			oT.value = reader.result;
+		};
+		reader.readAsDataURL(oFile);
+		return false;
+	};
+	var timer = null;
+	document.ondragover=function(){
+		oBox.style.display='block';
+		clearTimeout(timer);
+		timer = setTimeout(function(){
+			oBox.style.display='none';
+		},300);
+	};
+};
+</script>
+</head>
+
+<body>
+<textarea id="t1"></textarea>
+<div class="box">请将文件拖放到此处</div>
+</body>
+</html>
+

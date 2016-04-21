@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+li{width:300px; border-bottom:1px dashed #ccc; height:30px; line-height:30px;}
+li.on{ background:url(play.gif) no-repeat right;}
+</style>
+<script>
+window.onload=function(){
+	var aLi = document.querySelectorAll('ul li');
+	var oAudio = document.querySelector('#a1');
+	var aM = ['千千阙歌','时间都去哪儿了','小苹果','夜的钢琴曲','雨的印记'];
+	var iNow = 0;
+	for(var i=0;i<aLi.length;i++){
+		(function(index){
+			aLi[i].ondblclick=function(){
+				iNow = index;
+				tab();
+			};
+		})(i);
+	}
+	function tab(){
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].className='';
+		}
+		aLi[iNow].className='on';
+		oAudio.src = 'mp3/'+aM[iNow]+'.mp3';
+		oAudio.play();
+	}
+};
+</script>
+</head>
+
+<body>
+<ul>
+	<li>千千阙歌</li>
+	<li>时间都去哪儿了</li>
+	<li>小苹果</li>
+	<li>夜的钢琴曲</li>
+	<li>雨的印记</li>
+</ul>
+<audio id="a1"></audio>
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<script>
+window.onload=function(){
+	var oBtn = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oBtn3 = document.getElementById('btn3');
+	var oA = document.querySelector('audio');
+	oBtn.onclick=function(){
+		oA.play();
+	};
+	oBtn2.onclick=function(){
+		oA.pause();
+	};
+	oBtn3.onclick=function(){
+		oA.pause();
+		oA.currentTime = 0;
+	};
+	
+};
+</script>
+
+
+<body>
+<input type="button" value="播放" id="btn1"  />
+<input type="button" value="暂停" id="btn2"  />
+<input type="button" value="停止" id="btn3"  />
+<audio src="mp3/千千阙歌.mp3"></audio>
+</body>
+</html>
